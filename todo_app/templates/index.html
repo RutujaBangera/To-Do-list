@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>To do list</title>
+</head>
+<body>
+    <h2>"To Do List: Manage you task like a Pro"</h2>
+
+    <h2><p id="current-date"></p></h2>
+    <script>
+        var currentDate = new Date();
+        var formattedDate = currentDate.toLocaleDateString();
+        document.getElementById("current-date").innerHTML = formattedDate;
+    </script>
+
+    <form action="{{url_for('home')}}" class="input-container" method="POST">
+        <input type="test" placeholder="Enter your task here" id="input-todo" name="todo_name" required>
+        <button id="add-todo">+</button>
+    </form>
+    <h2>Todos</h2>
+    <div class="todo-container">
+        {% for item in items %}
+        <div class="todo">
+            <form action="{{url_for('checked_todo', todo_id=item.id)}}" method="POST">
+                <input type="checkbox" {% if item.checked %}checked{% endif %} onchange="this.form.submit()">
+            </form>
+            <p>{{ item.name }}</p>
+            <div class="actions">
+                <form action="{{url_for('delete_todo', todo_id=item.id)}}" method="POST">
+                    <button>Delete</button>
+                </form>
+                <form action="{{url_for('edit_todo', todo_id=item.id)}}" method="POST">
+                    <button>Edit</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
