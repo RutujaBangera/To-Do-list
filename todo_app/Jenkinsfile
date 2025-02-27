@@ -12,7 +12,7 @@ pipeline {
     }
     stage('Checkout Git Branch') {
       steps {
-        git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/RutujaBangera/ReciPic.git'
+        git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/RutujaBangera/To-Do-list.git'
       }
     }
     stage('Build Application') {
