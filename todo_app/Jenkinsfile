@@ -1,0 +1,25 @@
+#!groovy
+
+pipeline {
+  agent any
+  stages {
+    stage('Workspace Cleanup') {
+      steps {
+        // Clean before build
+        cleanWs()
+        echo 'cleaning workspace...'
+      }
+    }
+    stage('Checkout Git Branch') {
+      steps {
+        git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/RutujaBangera/ReciPic.git'
+      }
+    }
+    stage('Build Application') {
+      steps {
+        sh 'python3 -m pip install --upgrade pip'
+        sh 'pip3 install -r requirements.txt'
+      }
+    }
+    }
+  }
