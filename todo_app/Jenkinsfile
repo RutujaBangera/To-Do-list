@@ -1,5 +1,3 @@
-#!groovy
-
 pipeline {
   agent any
   stages {
@@ -7,7 +5,7 @@ pipeline {
       steps {
         // Clean before build
         cleanWs()
-        echo 'cleaning workspace...'
+        echo 'Cleaning workspace...'
       }
     }
     stage('Checkout Git Branch') {
@@ -17,10 +15,9 @@ pipeline {
     }
     stage('Build Application') {
       steps {
-        sh 'python3 -m pip install --upgrade pip'
-        sh 'pip3 install -r requirements.txt'
+        bat 'python -m pip install --upgrade pip'
+        bat 'pip install -r requirements.txt'
       }
-
     }
   }
 }
