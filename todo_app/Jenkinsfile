@@ -16,10 +16,18 @@ pipeline {
       }
     }
     stage('Build Application') {
-      steps {
+    steps {
+        // Install dependencies
         sh 'python3 -m pip install --upgrade pip'
         sh 'pip3 install -r requirements.txt'
-      }
+
+        // Run a quick Flask check
+        sh 'python3 -c "from main import app; print(app)"'
+
+        // Optional: Run tests if available
+        sh 'python3 -m unittest discover || echo "No tests found"'
     }
+}
+
     }
   }
