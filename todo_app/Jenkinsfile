@@ -15,12 +15,11 @@ pipeline {
         git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/RutujaBangera/To-Do-list.git'
       }
     }
-   stage('Build Application') {
+    stage('Build Application') {
     steps {
-        bat 'C:\\Python313\\python app.py'  // Use the actual Python installation path
+        bat 'python app.py'
     }
 }
-
 
     }
   }
