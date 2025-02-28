@@ -13,7 +13,7 @@ pipeline {
         checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-credentials', url: 'https://github.com/RutujaBangera/To-Do-list.git']])
       }
     }
-   stage('Build Appliaction') {
+   stage('Build Application') {
     steps {
         git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/RutujaBangera/To-Do-list.git'
         bat 'python -m pip install --upgrade pip'
@@ -25,6 +25,11 @@ pipeline {
    stage('Test') {
     steps {
         echo "The job has been tested"
+    }
+   }
+    stage('Deployment') {
+    steps {
+        echo "Deployement Successful!!!"
     }
    }
   }
