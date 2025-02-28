@@ -16,6 +16,8 @@ pipeline {
    stage('Build Appliaction') {
     steps {
         git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/RutujaBangera/To-Do-list.git'
+        bat 'python -m pip install --upgrade pip'
+        bat 'pip install -r requirements.txt'
         bat 'python main.py'
     }
    }
