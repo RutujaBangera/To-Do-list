@@ -27,11 +27,6 @@ pipeline {
         echo "The job has been tested."
     }
    }
-    stage('Deployment') {
-    steps {
-        echo "Deployement Successful!!!"
-    }
-   }
   }
   post {
         always {
