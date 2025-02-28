@@ -22,14 +22,6 @@ pipeline {
         echo 'Build completed successfully!'
     }
    }
-    stage('Deploy Application') {
-            steps {
-                script {
-                    echo 'Deploying application...'
-                    bat "python todo_app/main.py &"
-                }
-            }
-        }
    stage('Test') {
     steps {
         echo "The job has been tested"
