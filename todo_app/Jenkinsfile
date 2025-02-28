@@ -16,7 +16,7 @@ pipeline {
    stage('Build Appliaction') {
     steps {
         git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/RutujaBangera/To-Do-list.git'
-        bat label: ",script: 'python main.py'
+        bat 'python main.py'
     }
    }
    stage('Test') {
