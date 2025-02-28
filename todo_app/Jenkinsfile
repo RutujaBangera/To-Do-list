@@ -17,7 +17,8 @@ pipeline {
     steps {
         git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/RutujaBangera/To-Do-list.git'
         bat 'python -m pip install --upgrade pip'
-        bat 'pip install -r C:\ProgramData\Jenkins\.jenkins\workspace\Python_TodoList\todo_app\requirements.txt'
+        bat 'cd C:/ProgramData/Jenkins/.jenkins/workspace/Python_TodoList/todo_app'
+        bat 'pip install -r requirements.txt'
         bat 'python main.py'
     }
    }
