@@ -24,7 +24,7 @@ pipeline {
    }
    stage('Test') {
     steps {
-        echo "The job has been tested"
+        echo "The job has been tested."
     }
    }
     stage('Deployment') {
