@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     echo 'Deploying application...'
-                    bat "python ${APP_DIR}/main.py &"
+                    bat "python todo_app/main.py &"
                 }
             }
         }
