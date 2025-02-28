@@ -10,14 +10,19 @@ pipeline {
     }
     stage('Checkout Git Branch') {
       steps {
-        git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/RutujaBangera/To-Do-list.git'
+        checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-credentials', url: 'https://github.com/RutujaBangera/To-Do-list.git']])
       }
     }
-   stage('Install Dependencies') {
+   stage('Build Appliaction') {
     steps {
-        sh 'C:\\Users\\Rutuja\\AppData\\Local\\Programs\\Python\\Python39\\python.exe -m pip install --upgrade pip'
+        git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/RutujaBangera/To-Do-list.git'
+        bat 'python main.py'
     }
-}
-
+   }
+   stage('Test') {
+    steps {
+        echo "The job has been tested"
+    }
+   }
   }
 }
